@@ -51,4 +51,18 @@ public class BoxController : ControllerBase
         return boxes;
     }
 
+    [HttpDelete]
+    [Route("/api/boxes/{boxId}")]
+    public void DeleteBox(int boxId)
+    { 
+        try 
+        { 
+            _service.DeleteBox(boxId);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
+
 }

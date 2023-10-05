@@ -39,4 +39,16 @@ public class Repository
             return conn.Query<Box>(sql);
         }
     }
+
+    public Box DeleteBox(int boxId)
+    {
+        var sql = @"DELETE FROM box_factory.boxes WHERE id = @BoxId RETURNING *;";
+
+        var parameters = new { BoxId = boxId };
+
+        using (var conn = _dataSource.OpenConnection())
+        {
+            return conn.QuerySingle<Box>(sql, parameters);
+        }
+    }
 }

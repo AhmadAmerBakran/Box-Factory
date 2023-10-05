@@ -23,4 +23,9 @@ public class BoxService
     {
         return _repository.GetBoxes();
     }
+
+    public Box DeleteBox(int boxId)
+    {
+        return _repository.DeleteBox(boxId);
+    }
 }
