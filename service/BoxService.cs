@@ -18,4 +18,9 @@ public class BoxService
         return _repository.CreateBox(boxName, price, boxWidth,
             boxLength, boxHight, boxThickness, boxColor);
     }
+
+    public IEnumerable<Box> GetBoxes()
+    {
+        return _repository.GetBoxes();
+    }
 }

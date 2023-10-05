@@ -5,7 +5,7 @@ using service;
 namespace Box_Factory.controllers;
 
 [ApiController]
-[Route("[Controller]")]
+
 public class BoxController : ControllerBase
 {
     private readonly BoxService _service;
@@ -31,4 +31,24 @@ public class BoxController : ControllerBase
             return BadRequest($"An error occurred: {e.Message}");
         }
     }
+
+    [HttpGet]
+    [Route("api/boxes")]
+    public IEnumerable<Box> GetBoxes()
+    {
+        IEnumerable<Box> boxes = new List<Box>();
+        try
+        {
+           
+            boxes = _service.GetBoxes();
+            
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+
+        return boxes;
+    }
+
 }

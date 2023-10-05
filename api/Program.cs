@@ -15,10 +15,6 @@ builder.Services.AddSingleton<BoxService>();
 builder.Services.AddSingleton<Repository>();
 builder.Services.AddSingleton<CreateDataBase>();
 
-//builder.Services.AddSingleton(new CreateDataBase(Utilities.ProperlyFormattedConnectionString));
-
-
-
 var app = builder.Build();
 
 app.Services.GetRequiredService<CreateDataBase>().SetupDatabase();

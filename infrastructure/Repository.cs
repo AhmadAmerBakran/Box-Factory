@@ -29,4 +29,14 @@ public class Repository
             return conn.QuerySingle<Box>(sql, parameters);
         }
     }
+
+    public IEnumerable<Box> GetBoxes()
+    {
+        var sql = @"SELECT Id, BoxName, Price, 
+                               BoxWidth, BoxLength, BoxHeight, BoxThickness, BoxColor FROM box_factory.boxes;";
+        using (var conn = _dataSource.OpenConnection())
+        {
+            return conn.Query<Box>(sql);
+        }
+    }
 }
