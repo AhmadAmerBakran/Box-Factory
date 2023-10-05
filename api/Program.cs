@@ -10,6 +10,7 @@ builder.Services.AddNpgsqlDataSource(Utilities.ProperlyFormattedConnectionString
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddControllers();
 builder.Services.AddSingleton<BoxService>();
 builder.Services.AddSingleton<Repository>();
 builder.Services.AddSingleton<CreateDataBase>();
@@ -31,5 +32,5 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-//app.MapControllers();
+app.MapControllers();
 app.Run();
