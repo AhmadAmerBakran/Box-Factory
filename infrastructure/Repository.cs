@@ -51,4 +51,13 @@ public class Repository
             return conn.QuerySingle<Box>(sql, parameters);
         }
     }
+
+    public Box GetBoxById(int boxId)
+    {
+        var sql = @"SELECT * FROM box_factory.boxes WHERE id  = @Boxid; ";
+        using (var conn = _dataSource.OpenConnection())
+        {
+            return conn.QuerySingleOrDefault<Box>(sql, new { Boxid = boxId });
+        }
+    }
 }

@@ -65,4 +65,22 @@ public class BoxController : ControllerBase
         }
     }
 
+    [HttpGet]
+    [Route("/api/boxes/{boxId}")]
+    public Box GetBoxById(int boxId)
+    {
+
+        Box box = null;
+        try
+        {
+            box = _service.GetBoxById(boxId);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+
+        return box;
+    }
+
 }
