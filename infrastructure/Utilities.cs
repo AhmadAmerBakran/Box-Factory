@@ -1,25 +1,22 @@
-﻿using Npgsql;
+﻿using System;
 
-namespace infrastructure;
-
-public static class Utilities
+namespace infrastructure
 {
-    public static readonly Uri Uri;
-    public static readonly string ProperlyFormattedConnectionString;
-
-    static Utilities()
+    public static class Utilities
     {
-        string rawConnectionString;
-        string envVarKeyName = "pgconn";
+        public static readonly Uri Uri;
+        public static readonly string ProperlyFormattedConnectionString;
 
-        rawConnectionString = Environment.GetEnvironmentVariable(envVarKeyName)!;
-        if (rawConnectionString == null)
+        static Utilities()
         {
-            throw new Exception($@"YOUR CONN STRING {envVarKeyName} IS EMPTY!");
-        }
+            string envVarKeyName = "pgconn";
+            string rawConnectionString = Environment.GetEnvironmentVariable(envVarKeyName);
 
-        try
-        {
+            if (string.IsNullOrEmpty(rawConnectionString))
+            {
+                throw new Exception($@"YOUR CONN STRING {envVarKeyName} IS EMPTY!");
+            }
+
             Uri = new Uri(rawConnectionString);
             ProperlyFormattedConnectionString = string.Format(
                 "Server={0};Database={1};User Id={2};Password={3};Port={4};Pooling=true;MaxPoolSize=3",
@@ -28,13 +25,6 @@ public static class Utilities
                 Uri.UserInfo.Split(':')[0],
                 Uri.UserInfo.Split(':')[1],
                 Uri.Port > 0 ? Uri.Port : 5432);
-            new NpgsqlDataSourceBuilder(ProperlyFormattedConnectionString).Build().OpenConnection().Close();
-        }
-        catch (Exception e)
-        {
-            throw new Exception("", e);
         }
     }
-
-
 }
