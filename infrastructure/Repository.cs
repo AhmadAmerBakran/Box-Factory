@@ -1,10 +1,11 @@
 ﻿using Dapper;
+using infrastructure.interfaces;
 using infrastructure.Models;
 using Npgsql;
 
 namespace infrastructure;
 
-public class Repository
+public class Repository : IBoxRepository
 {
     private readonly NpgsqlDataSource _dataSource;
 
@@ -77,4 +78,16 @@ public class Repository
             });
         }
     }
+
+    public IEnumerable<SearchBox> SearchBoxes(string term)
+    {
+      
+       string sql = "SELECT id, BoxName, Price, BoxColor FROM box_factory.boxes WHERE BoxName LIKE '%' || @Term || '%' OR Price::text LIKE '%' || @Term || '%' OR BoxColor LIKE '%' || @Term || '%';";
+
+        using (var conn = _dataSource.OpenConnection())
+        {
+            return conn.Query<SearchBox>(sql, new {Term = term});
+        }
+    }
+
 }
