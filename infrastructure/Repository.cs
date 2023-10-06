@@ -72,8 +72,8 @@ public class Repository : IBoxRepository
             {
                 BoxId = updatedBox.Id,
                 Name = updatedBox.BoxName,
-                BoxPrice = updatedBox.Price, Width = updatedBox.BoxWidth, Length = updatedBox.BoxLenght,
-                Hight = updatedBox.BoxHight, Thickness = updatedBox.BoxThickness, Color = updatedBox.BoxColor
+                BoxPrice = updatedBox.Price, Width = updatedBox.BoxWidth, Length = updatedBox.BoxLength,
+                Hight = updatedBox.BoxHeight, Thickness = updatedBox.BoxThickness, Color = updatedBox.BoxColor
                 
             });
         }

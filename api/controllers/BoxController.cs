@@ -21,7 +21,7 @@ public class BoxController : ControllerBase
     {
         try
         {
-            var createdBox = _service.CreateBox(box.BoxName, box.Price, box.BoxWidth, box.BoxLenght, box.BoxHight,
+            var createdBox = _service.CreateBox(box.BoxName, box.Price, box.BoxWidth, box.BoxLength, box.BoxHeight,
                 box.BoxThickness, box.BoxColor);
             return createdBox;
         }
