@@ -1,4 +1,5 @@
 using infrastructure;
+using infrastructure.interfaces;
 using service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddSingleton<BoxService>();
-builder.Services.AddSingleton<Repository>();
+builder.Services.AddSingleton<IBoxRepository, Repository>();
 builder.Services.AddSingleton<CreateDataBase>();
 
 var app = builder.Build();
@@ -26,6 +27,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors(options =>
+{ 
+    options.SetIsOriginAllowed(origin => true)
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials();
+});
 
 app.UseHttpsRedirection();
 app.MapControllers();

@@ -21,7 +21,7 @@ public class BoxController : ControllerBase
     {
         try
         {
-            var createdBox = _service.CreateBox(box.BoxName, box.Price, box.BoxWidth, box.BoxLenght, box.BoxHight,
+            var createdBox = _service.CreateBox(box.BoxName, box.Price, box.BoxWidth, box.BoxLength, box.BoxHeight,
                 box.BoxThickness, box.BoxColor);
             return createdBox;
         }
@@ -82,14 +82,21 @@ public class BoxController : ControllerBase
 
         return box;
     }
+    
+
 
     [HttpPut]
     [Route("/api/boxes/{boxId}")]
     public IActionResult UpdateBox(int boxId, [FromBody] Box updatedBox)
     {
-
         try
         {
+            var existingBox = _service.GetBoxById(boxId);
+            if(existingBox == null)
+            {
+                return NotFound(new { Message = "Box with given ID not found." });
+            }
+
             updatedBox.Id = boxId;
             var updated = _service.UpdateBox(updatedBox);
             if (updated != null)
@@ -98,15 +105,26 @@ public class BoxController : ControllerBase
             }
             else
             {
-                return NotFound(new { Message = "Box not found or could not be updated." });
+                return NotFound(new { Message = "Box could not be updated." });
             }
         }
         catch (Exception e)
         {
             // Log the exception
-            return BadRequest(new { Message = "Box not found or could not be updated" });
+            return BadRequest(new { Message = "An error occurred while updating the box" });
         }
     }
 
+    [HttpGet]
+    [Route("api/Searchboxes")]
+    public IActionResult SearchBoxes([FromQuery] string searchTerm)
+    {
+        if (string.IsNullOrEmpty(searchTerm) || searchTerm.Length < 1)
+        {
+            return BadRequest("Search term must be at least 2 characters.");
+        }
 
+        return Ok(_service.SearchBoxes(searchTerm));
+    }
+    
 }

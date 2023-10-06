@@ -1,13 +1,14 @@
 ﻿using infrastructure;
+using infrastructure.interfaces;
 using infrastructure.Models;
 
 namespace service;
 
 public class BoxService
 {
-    private readonly Repository _repository;
+    private readonly IBoxRepository _repository;
 
-    public BoxService(Repository repository)
+    public BoxService(IBoxRepository repository)
     {
         _repository = repository;
     }
@@ -37,5 +38,10 @@ public class BoxService
     public Box UpdateBox(Box updatedBox)
     {
         return _repository.UpdateBox(updatedBox);
+    }
+
+    public IEnumerable<SearchBox> SearchBoxes(string term)
+    {
+        return _repository.SearchBoxes(term);
     }
 }
