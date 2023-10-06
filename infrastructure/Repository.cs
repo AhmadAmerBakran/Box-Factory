@@ -60,4 +60,5 @@ public class Repository
             return conn.QuerySingleOrDefault<Box>(sql, new { Boxid = boxId });
         }
     }
+    
 }
