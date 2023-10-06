@@ -33,5 +33,9 @@ public class BoxService
     {
         return _repository.GetBoxById(boxId);
     }
-    
+
+    public Box UpdateBox(Box updatedBox)
+    {
+        return _repository.UpdateBox(updatedBox);
+    }
 }
