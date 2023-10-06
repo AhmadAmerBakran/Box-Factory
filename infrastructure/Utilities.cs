@@ -15,7 +15,8 @@ public static class Utilities
         rawConnectionString = Environment.GetEnvironmentVariable(envVarKeyName)!;
         if (rawConnectionString == null)
         {
-            throw new Exception($@"YOUR CONN STRING {envVarKeyName} IS EMPTY!");
+            throw new Exception($@"
+YOUR CONN STRING {envVarKeyName} IS EMPTY");
         }
 
         try
@@ -35,6 +36,4 @@ public static class Utilities
             throw new Exception("", e);
         }
     }
-
-
 }
