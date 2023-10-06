@@ -83,4 +83,30 @@ public class BoxController : ControllerBase
         return box;
     }
 
+    [HttpPut]
+    [Route("/api/boxes/{boxId}")]
+    public IActionResult UpdateBox(int boxId, [FromBody] Box updatedBox)
+    {
+
+        try
+        {
+            updatedBox.Id = boxId;
+            var updated = _service.UpdateBox(updatedBox);
+            if (updated != null)
+            {
+                return Ok(updated);
+            }
+            else
+            {
+                return NotFound(new { Message = "Box not found or could not be updated." });
+            }
+        }
+        catch (Exception e)
+        {
+            // Log the exception
+            return BadRequest(new { Message = "Box not found or could not be updated" });
+        }
+    }
+
+
 }

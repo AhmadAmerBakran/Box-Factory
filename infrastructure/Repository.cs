@@ -60,4 +60,21 @@ public class Repository
             return conn.QuerySingleOrDefault<Box>(sql, new { Boxid = boxId });
         }
     }
+
+    public Box UpdateBox(Box updatedBox)
+    {
+        
+        var sql = @"UPDATE box_factory.boxes SET BoxName = @Name, Price = @BoxPrice, BoxWidth = @Width, BoxLength = @Length, BoxHeight = @Hight, BoxThickness = @Thickness, BoxColor = @Color WHERE id = @BoxId RETURNING *;";
+        using (var conn = _dataSource.OpenConnection())
+        {
+            return conn.QuerySingle<Box>(sql, new
+            {
+                BoxId = updatedBox.Id,
+                Name = updatedBox.BoxName,
+                BoxPrice = updatedBox.Price, Width = updatedBox.BoxWidth, Length = updatedBox.BoxLenght,
+                Hight = updatedBox.BoxHight, Thickness = updatedBox.BoxThickness, Color = updatedBox.BoxColor
+                
+            });
+        }
+    }
 }
