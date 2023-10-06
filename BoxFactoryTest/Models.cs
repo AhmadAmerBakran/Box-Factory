@@ -17,6 +17,7 @@ public class Box
     public double BoxThickness { get; set; }
     
     public string BoxColor { get; set; }
+    public string BoxImgUrl { get; set; }
     
 }
 
@@ -25,5 +26,6 @@ public class SearchBox
     public string BoxName { get; set; }
     public double Price { get; set; }
     public string BoxColor { get; set; }
+    public string BoxImgUrl { get; set; }
     
 }

@@ -31,7 +31,8 @@ namespace BoxFactoryTest
                 BoxLength = 150,
                 BoxHeight = 80,
                 BoxThickness = 5,
-                BoxColor = "Brown"
+                BoxColor = "Brown",
+                BoxImgUrl = ""
             };
             
             var url = "http://localhost:5000/api/box";

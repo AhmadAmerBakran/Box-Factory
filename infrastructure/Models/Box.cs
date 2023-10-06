@@ -25,5 +25,7 @@ public class Box
     public double BoxThickness { get; set; }
     
     public string BoxColor { get; set; }
+
+    public string BoxImgUrl { get; set; }
     
 }
