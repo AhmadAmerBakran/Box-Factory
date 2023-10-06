@@ -1,0 +1,45 @@
+name: Test Box Factory Api
+
+on:
+  push:
+    
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env: 
+      pgconn: ${{ secrets.PGCONN }}
+
+    steps:
+      # Step 0: Setup .NET SDK
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+      
+      # Step 1: Checkout the current repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+          
+          
+      # Step 2: Run Linter against code base
+      - name: Lint Code Base
+        uses: super-linter/super-linter@v5
+      
+      
+      # Step 3: Start your API
+      - name: Start API
+        run: |
+          cd api
+          dotnet run &
+      
+      # Step 4: Sleep to allow time for the API to start
+      - name: Sleep for 60 seconds
+        run: sleep 60s
+      
+      # Step 5: Run tests
+      - name: Run Tests
+        run: |
+          cd BoxFactoryTest
+          dotnet test BoxFactoryTest.csproj
