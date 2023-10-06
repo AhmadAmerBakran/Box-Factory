@@ -22,7 +22,7 @@ public class BoxController : ControllerBase
         try
         {
             var createdBox = _service.CreateBox(box.BoxName, box.Price, box.BoxWidth, box.BoxLength, box.BoxHeight,
-                box.BoxThickness, box.BoxColor);
+                box.BoxThickness, box.BoxColor, box.BoxImgUrl);
             return createdBox;
         }
         catch (Exception e)

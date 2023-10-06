@@ -14,10 +14,10 @@ public class BoxService
     }
 
     public Box CreateBox(string boxName, double price, double boxWidth,
-        double boxLength, double boxHight, double boxThickness, string boxColor)
+        double boxLength, double boxHight, double boxThickness, string boxColor, string boxImgUrl)
     {
         return _repository.CreateBox(boxName, price, boxWidth,
-            boxLength, boxHight, boxThickness, boxColor);
+            boxLength, boxHight, boxThickness, boxColor, boxImgUrl);
     }
 
     public IEnumerable<Box> GetBoxes()

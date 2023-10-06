@@ -129,6 +129,7 @@ CREATE TABLE IF NOT EXISTS box_factory.boxes
     BoxHeight      DOUBLE PRECISION,
     BoxThickness   DOUBLE PRECISION,
     BoxColor       TEXT,
+    BoxImgUrl       TEXT,
     PRIMARY KEY (id)
 );
  ";
