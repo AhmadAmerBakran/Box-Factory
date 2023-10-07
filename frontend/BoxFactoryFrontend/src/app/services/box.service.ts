@@ -16,4 +16,8 @@ export class BoxService {
     return this.http.get<Box[]>(`${this.url}/boxes`);
   }
 
+  createBox(request: Box): Observable<Box>{
+    return this.http.post<Box>(`${this.url}/box`, request);
+  }
+
 }

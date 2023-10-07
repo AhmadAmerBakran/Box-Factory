@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { BoxComponent } from './components/box/box.component';
 import { BoxListComponent } from './components/box-list/box-list.component';
+import { BoxCreateComponent } from './components/box-create/box-create.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'box',
-    component: BoxComponent
+    component: BoxCreateComponent
   },
   {
     path: 'boxes',
