@@ -9,11 +9,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { BoxComponent } from './components/box/box.component';
 import { BoxListComponent } from './components/box-list/box-list.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
   declarations: [AppComponent, NavBarComponent, BoxComponent, BoxListComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

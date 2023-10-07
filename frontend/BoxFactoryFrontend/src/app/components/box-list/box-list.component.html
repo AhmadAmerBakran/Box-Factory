@@ -1,3 +1,13 @@
-<p>
-  box-list works!
-</p>
+
+<div style="margin: 150px" >
+
+  <ul style="margin: 30px">
+  <ion-list *ngFor="let box of boxes">
+    <ion-card>
+      {{box.id}} <div>{{box.boxName}}</div>
+    </ion-card>
+
+  </ion-list>
+</ul>
+</div>
+

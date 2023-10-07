@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Box } from 'src/app/models/box';
+import { BoxService } from 'src/app/services/box.service';
 
 @Component({
   selector: 'app-box-list',
@@ -7,8 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoxListComponent  implements OnInit {
 
-  constructor() { }
+  boxes: Box[]= [];
+  constructor( private service : BoxService ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+     this.service.getBoxes().subscribe(result => {
+      this.boxes = result
+    })
+  }
+
+
 
 }
