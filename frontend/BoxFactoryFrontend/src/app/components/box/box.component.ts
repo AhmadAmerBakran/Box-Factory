@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Box } from 'src/app/models/box';
+import { BoxService } from 'src/app/services/box.service';
 
 @Component({
   selector: 'app-box',
@@ -7,8 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoxComponent  implements OnInit {
 
-  constructor() { }
+  box: Box | null = null;
 
-  ngOnInit() {}
+  constructor(private route: ActivatedRoute, private service: BoxService) { }
+
+  ngOnInit() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    if (id !== 0) {
+      this.service.getBoxById(id).subscribe(result => {
+        this.box = result;
+      });
+    }
+  }
+
 
 }

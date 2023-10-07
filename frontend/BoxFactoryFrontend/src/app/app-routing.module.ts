@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'boxes',
     component: BoxListComponent
   },
+  {
+    path: 'box/:id',  // <-- New Route for showing single box based on ID
+    component: BoxComponent
+  },
 
   ]
 @NgModule({

@@ -20,4 +20,9 @@ export class BoxService {
     return this.http.post<Box>(`${this.url}/box`, request);
   }
 
+  getBoxById(id: number): Observable<Box> {
+    return this.http.get<Box>(`${this.url}/boxes/${id}`);
+  }
+
+
 }
