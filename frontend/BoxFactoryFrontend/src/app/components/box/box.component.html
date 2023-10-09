@@ -1,0 +1,11 @@
+<ion-card style="margin: 200px" *ngIf="box">
+  Box ID: {{ box.id }}
+  Box Name: {{ box.boxName }}
+  Price: {{ box.price }}
+  Box Width: {{ box.boxWidth }}
+  Box Length: {{ box.boxLength }}
+  Box Height: {{ box.boxHeight }}
+  Box Thickness: {{ box.boxThickness }}
+  Box Color: {{ box.boxColor }}
+  <ion-img src="{{ box.boxImgUrl }}" alt="Box Image"></ion-img>
+</ion-card>

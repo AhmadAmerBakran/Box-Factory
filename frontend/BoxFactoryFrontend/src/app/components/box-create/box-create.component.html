@@ -1,0 +1,15 @@
+
+<div style="margin: 150px">
+  <form [formGroup]="fg" (ngSubmit)="submitCreating()">
+    <ion-input style="margin: 10px" formControlName="boxName" label="Enter a boxName" label-placement="floating" fill="outline" placeholder="boxName"></ion-input>
+    <ion-input style="margin: 10px" formControlName="price" label="Enter the price" label-placement="floating" fill="outline" placeholder="price"></ion-input>
+    <ion-input style="margin: 10px" formControlName="boxWidth" label="Enter boxWidth" label-placement="floating" fill="outline" placeholder="boxWidth"></ion-input>
+    <ion-input style="margin: 10px" formControlName="boxLength" label="Provide the boxLength" label-placement="floating" fill="outline" placeholder="boxLength"></ion-input>
+    <ion-input style="margin: 10px" formControlName="boxHeight" label="Provide the boxHeight" label-placement="floating" fill="outline" placeholder="boxHeight"></ion-input>
+    <ion-input style="margin: 10px" formControlName="boxThickness" label="Provide the boxThickness" label-placement="floating" fill="outline" placeholder="boxThickness"></ion-input>
+    <ion-input style="margin: 10px" formControlName="boxColor" label="Provide the boxColor" label-placement="floating" fill="outline" placeholder="boxColor"></ion-input>
+    <ion-input style="margin: 10px" formControlName="boxImgUrl" label="Provide the boxImgUrl" label-placement="floating" fill="outline" placeholder="boxImgUrl"></ion-input>
+    <ion-button style="margin: 10px" type="submit">Create Article</ion-button>
+  </form>
+</div>
+

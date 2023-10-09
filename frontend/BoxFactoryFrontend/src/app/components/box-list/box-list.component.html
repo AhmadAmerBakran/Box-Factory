@@ -1,0 +1,15 @@
+
+<div style="margin: 150px" >
+
+  <ul style="margin: 30px">
+  <ion-list *ngFor="let box of boxes">
+    <ion-card>
+      <div>{{box.id}}  {{box.boxName}}</div>
+      <button *ngIf="box.id" (click)="showBoxDetails(box.id)">Show Details</button>
+
+    </ion-card>
+
+  </ion-list>
+</ul>
+</div>
+
