@@ -52,7 +52,7 @@ public class BoxController : ControllerBase
     }
 
     [HttpDelete]
-    [Route("/api/boxes/{boxId}")]
+    [Route("/api/delete/{boxId}")]
     public void DeleteBox(int boxId)
     { 
         try 
