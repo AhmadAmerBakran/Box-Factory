@@ -13,11 +13,15 @@ import {HttpClientModule} from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BoxCreateComponent } from './components/box-create/box-create.component';
 import { BoxEditComponent } from './components/box-edit/box-edit.component';
+import { BoxSearchComponent } from './components/box-search/box-search.component';
 
 
 @NgModule({
-  declarations: [AppComponent, NavBarComponent, BoxComponent, BoxListComponent, BoxCreateComponent, BoxEditComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+  declarations: [AppComponent, NavBarComponent, BoxComponent,
+                 BoxListComponent, BoxCreateComponent, BoxEditComponent,
+                  BoxSearchComponent],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+            HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
