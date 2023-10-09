@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BoxService } from 'src/app/services/box.service';
 import {FormGroup} from "@angular/forms";
 import { ValidationService } from 'src/app/services/validation.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Box } from 'src/app/models/box';
 
 @Component({
@@ -15,7 +15,10 @@ export class BoxEditComponent  implements OnInit {
   public fg: FormGroup;
   box!: Box;
 
-  constructor(private service: BoxService, private validation: ValidationService, private route: ActivatedRoute) {
+  constructor(private service: BoxService,
+              private validation: ValidationService,
+              private route: ActivatedRoute,
+              private router: Router) {
     this.fg = this.validation.createBoxForm();
   }
 
@@ -36,6 +39,7 @@ export class BoxEditComponent  implements OnInit {
       this.service.updateBox(this.box.id, updateBoxData).subscribe(updatedBox => {
         this.box = updatedBox;
         alert('Box updated successfully!');
+        this.router.navigate(['/boxes']);
       }, error => {
         console.error('Error updating box:', error);
       });
