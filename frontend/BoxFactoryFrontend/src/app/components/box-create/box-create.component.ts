@@ -10,20 +10,13 @@ import { Box } from 'src/app/models/box';
   styleUrls: ['./box-create.component.scss'],
 })
 export class BoxCreateComponent implements OnInit {
-  fg: FormGroup;
 
-  constructor(private service: BoxService, private fb: FormBuilder, private validation: ValidationService) {
-    this.fg = this.fb.group({
-      boxName: ['', this.validation.getBoxNameValidators()],
-      price: ['', this.validation.getPriceValidators()],
-      boxWidth: ['', this.validation.getBoxWidthValidators()],
-      boxLength: ['', this.validation.getBoxLengthValidators()],
-      boxHeight: ['', this.validation.getBoxHeightValidators()],
-      boxThickness: ['', this.validation.getBoxThicknessValidators()],
-      boxColor: ['', this.validation.getBoxColorValidators()],
-      boxImgUrl: ['', this.validation.getBoxImgUrlValidators()]
-    });
+  public fg: FormGroup;
+
+  constructor(private service: BoxService, private validation: ValidationService) {
+    this.fg = this.validation.createBoxForm();
   }
+
 
 
   public submitCreating(): void {

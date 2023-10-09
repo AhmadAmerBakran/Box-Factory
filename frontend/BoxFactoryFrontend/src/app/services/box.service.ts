@@ -24,5 +24,9 @@ export class BoxService {
     return this.http.get<Box>(`${this.url}/boxes/${id}`);
   }
 
+  updateBox(id: number, box: Box): Observable<Box>{
+    return this.http.put<Box>(`${this.url}/update/${id}`, box);
+  }
+
 
 }

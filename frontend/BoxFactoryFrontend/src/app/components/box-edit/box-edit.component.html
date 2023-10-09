@@ -1,3 +1,35 @@
-<p>
-  box-edit works!
-</p>
+<div class="box-edit">
+
+  <ion-card>
+
+    <form  [formGroup]="fg" (ngSubmit)="updateBox()" >
+
+      <div  style="margin-top: 50px; padding: 15px">
+        <ion-label>Box Name:</ion-label>
+        <ion-input type="text" formControlName="boxName" ></ion-input>
+
+        <ion-label>Price:</ion-label>
+        <ion-input type="number" formControlName="price" ></ion-input>
+
+        <ion-label>Width:</ion-label>
+        <ion-input type="number" formControlName="boxWidth" ></ion-input>
+
+        <ion-label>Length:</ion-label>
+        <ion-input type="number" formControlName="boxLength" ></ion-input>
+
+        <ion-label>Height:</ion-label>
+        <ion-input type="number" formControlName="boxHeight" ></ion-input>
+
+        <ion-label>Thickness:</ion-label>
+        <ion-input type="number" formControlName="boxThickness" ></ion-input>
+
+        <ion-label>Color:</ion-label>
+        <ion-input type="text" formControlName="boxColor" ></ion-input>
+
+        <ion-button type="submit">Update Box</ion-button>
+      </div>
+    </form>
+
+  </ion-card>
+
+</div>

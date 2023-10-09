@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Box } from 'src/app/models/box';
 import { BoxService } from 'src/app/services/box.service';
 
@@ -12,7 +12,7 @@ export class BoxComponent  implements OnInit {
 
   box: Box | null = null;
 
-  constructor(private route: ActivatedRoute, private service: BoxService) { }
+  constructor(private route: ActivatedRoute, private service: BoxService, private router: Router) { }
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -21,6 +21,10 @@ export class BoxComponent  implements OnInit {
         this.box = result;
       });
     }
+  }
+
+  goToUpdatePage(boxId: number) {
+    this.router.navigate(['/update', boxId]);
   }
 
 

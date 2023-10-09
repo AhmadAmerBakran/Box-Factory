@@ -5,7 +5,8 @@
   <ion-list *ngFor="let box of boxes">
     <ion-card>
       <div>{{box.id}}  {{box.boxName}}</div>
-      <button *ngIf="box.id" (click)="showBoxDetails(box.id)">Show Details</button>
+      <button  class="details" *ngIf="box.id" (click)="showBoxDetails(box.id)">Show Details</button>
+
 
     </ion-card>
 

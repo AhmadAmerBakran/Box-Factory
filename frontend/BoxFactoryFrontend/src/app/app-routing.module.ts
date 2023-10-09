@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { BoxComponent } from './components/box/box.component';
 import { BoxListComponent } from './components/box-list/box-list.component';
 import { BoxCreateComponent } from './components/box-create/box-create.component';
+import { BoxEditComponent } from './components/box-edit/box-edit.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
     path: 'box/:id',  // <-- New Route for showing single box based on ID
     component: BoxComponent
   },
+  {
+    path: 'update/:id',
+    component: BoxEditComponent
+  }
 
   ]
 @NgModule({
