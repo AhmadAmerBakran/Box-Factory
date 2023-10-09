@@ -4,6 +4,7 @@ import { BoxComponent } from './components/box/box.component';
 import { BoxListComponent } from './components/box-list/box-list.component';
 import { BoxCreateComponent } from './components/box-create/box-create.component';
 import { BoxEditComponent } from './components/box-edit/box-edit.component';
+import { BoxSearchComponent } from './components/box-search/box-search.component';
 
 
 const routes: Routes = [
@@ -31,9 +32,15 @@ const routes: Routes = [
   {
     path: 'update/:id',
     component: BoxEditComponent
+  },
+  {
+    path: 'search',
+    component: BoxSearchComponent
   }
 
-  ]
+
+
+]
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })

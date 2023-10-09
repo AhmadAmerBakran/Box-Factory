@@ -12,7 +12,11 @@ export class BoxComponent  implements OnInit {
 
   box: Box | null = null;
 
-  constructor(private route: ActivatedRoute, private service: BoxService, private router: Router) { }
+
+
+  constructor(private route: ActivatedRoute,
+              private service: BoxService,
+              private router: Router) { }
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -20,6 +24,20 @@ export class BoxComponent  implements OnInit {
       this.service.getBoxById(id).subscribe(result => {
         this.box = result;
       });
+    }
+  }
+  deleteBox(id: number) {
+    if (confirm('Are you sure you want to delete this box?')) {
+      const id = Number(this.route.snapshot.paramMap.get('id'));
+      this.service.deleteBox(id).subscribe(() => {
+          alert('Box deleted successfully!');
+          // Navigate to the box-list page after successful deletion
+          this.router.navigate(['/boxes']);
+        },
+        error => {
+          console.error('Error deleting box:', error);
+        }
+      );
     }
   }
 

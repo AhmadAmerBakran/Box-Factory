@@ -32,6 +32,8 @@ export class BoxService {
     return this.http.get<Box[]>(`${this.url}/search`, { params: criteria as any });
   }
 
-
+  deleteBox(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.url}/delete/${id}`);
+  }
 
 }
