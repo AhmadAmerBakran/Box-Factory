@@ -8,7 +8,7 @@ namespace BoxFactoryTest.playwrightTests;
 
 [Parallelizable(ParallelScope.Self)]
 [TestFixture]
-public class PlaywrightTests : PageTest
+public class HomePageTest : PageTest
 {
     [Test]
     public async Task HomepageHasDataBoxInTitle()
