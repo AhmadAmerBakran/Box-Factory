@@ -28,8 +28,8 @@ export class BoxService {
     return this.http.put<Box>(`${this.url}/update/${id}`, box);
   }
 
-  searchBoxes(criteria: SearchBox): Observable<Box[]> {
-    return this.http.get<Box[]>(`${this.url}/search`, { params: criteria as any });
+  searchBoxes(criteria: string): Observable<Box[]> {
+    return this.http.get<Box[]>(`${this.url}/search?searchTerm=${criteria}`);
   }
 
   deleteBox(id: number): Observable<void> {

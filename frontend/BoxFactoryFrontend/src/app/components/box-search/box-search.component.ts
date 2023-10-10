@@ -8,7 +8,7 @@ import { BoxService } from 'src/app/services/box.service';
   styleUrls: ['./box-search.component.scss'],
 })
 export class BoxSearchComponent  implements OnInit {
-  criteria: SearchBox = {};
+  criteria!: string;
   results: Box[] = [];
 
   constructor(private boxService: BoxService) { }

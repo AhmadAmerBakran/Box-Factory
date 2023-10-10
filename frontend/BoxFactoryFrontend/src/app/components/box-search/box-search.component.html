@@ -9,7 +9,7 @@
 </ion-list>
 -->
 <ion-searchbar
-  [(ngModel)]="criteria.boxName"
+  [(ngModel)]="criteria"
   [debounce]="1000"
   (ionInput)="search()"
   placeholder="Search by Box Name, price or color">
