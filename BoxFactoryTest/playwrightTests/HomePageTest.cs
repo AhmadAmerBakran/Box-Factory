@@ -27,7 +27,7 @@ public class HomePageTest : PageTest
     public async Task HomepageHasHeading()
     {
         
-        await Page.GotoAsync("http://localhost:4200/");
+        await Page.GotoAsync("http://localhost:5000/");
 
         var heading = Page.GetByRole(AriaRole.Heading);
         await Expect(heading).ToHaveTextAsync(new Regex("Welcome to Box Factory project"));

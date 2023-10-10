@@ -5,5 +5,6 @@
     &lt;TestId&gt;NUnit3x::998C0B12-CF9B-41A4-ADE5-100B30C4CE01::net8.0::BoxFactoryTest.PlaywrightTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::998C0B12-CF9B-41A4-ADE5-100B30C4CE01::net8.0::BoxFactoryTest.playwrightTests.PlaywrightTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::998C0B12-CF9B-41A4-ADE5-100B30C4CE01::net8.0::BoxFactoryTest.playwrightTests.CreateBoxTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::998C0B12-CF9B-41A4-ADE5-100B30C4CE01::net8.0::BoxFactoryTest.playwrightTests.HomePageTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
