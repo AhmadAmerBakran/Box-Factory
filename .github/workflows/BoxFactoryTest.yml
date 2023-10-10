@@ -12,44 +12,47 @@ jobs:
       pgconn: ${{ secrets.PGCONN }}
 
     steps:
-      # Step 0: Setup .NET SDK
+      
+      # Step 0: Setup Node.js for Angular
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.17.1'
+        
+      # Step 1: Setup .NET SDK
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
       
-      # Step 1: Checkout the current repository
+      # Step 2: Checkout the current repository
       - name: Checkout code
         uses: actions/checkout@v4
           
-      # Step 2: add Playwright Package and build  
-      - name: Playwright Package and build
+      # Step 3: Install Angular dependencies
+      - name: Install Angular dependencies
         run: |
-            cd BoxFactoryTest
-            dotnet add package Microsoft.Playwright.NUnit
-            dotnet build
-            pwsh bin/Debug/net8.0/playwright.ps1 install
+            cd frontend/BoxFactoryFrontend # Replace with your actual Angular directory path
+            npm install
+            ng build
+          
+      # Step 4: Install API Nuget Packages
+      - name: Install API Nuget Packages
+        run: |
+          cd api # Replace with your actual .NET Web API directory path
+          dotnet restore
       
-      
-      # Step 3: Start your API
+      # Step 5: Start your API
       - name: Start API
         run: |
           cd api
           dotnet run &
-          
-          
-      # Step 4: Start your frontend
-        #  - name: Start Angular
-          #  run: |
-          #    cd frontend/BoxFactoryFrontend
-          #    ng serve &
-          
-          
-      # Step 5: Sleep to allow time for the API to start
+
+      # Step 6: Sleep to allow time for the API to start
       - name: Sleep for 60 seconds
         run: sleep 60s
       
-      # Step 6: Run tests
+      # Step 7: Run tests
       - name: Run Tests
         run: |
           cd BoxFactoryTest
