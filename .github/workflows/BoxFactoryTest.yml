@@ -35,13 +35,21 @@ jobs:
       - name: Start API
         run: |
           cd api
-          dotnet run &
-      
-      # Step 4: Sleep to allow time for the API to start
+          dotnet run 
+          
+          
+      # Step 4: Start your frontend
+      - name: Start Angular
+        run: |
+          cd frontend/BoxFactoryFrontend
+          ng serve &
+          
+          
+      # Step 5: Sleep to allow time for the API to start
       - name: Sleep for 60 seconds
         run: sleep 60s
       
-      # Step 5: Run tests
+      # Step 6: Run tests
       - name: Run Tests
         run: |
           cd BoxFactoryTest
