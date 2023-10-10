@@ -9,7 +9,7 @@ namespace BoxFactoryTest.playwrightTests
         [Test]
         public async Task CheckInputFields()
         {
-            await Page.GotoAsync("http://localhost:4200/box");
+            await Page.GotoAsync("http://localhost:5000/box");
             
             Dictionary<string, string> expectedPlaceholders = new Dictionary<string, string>
             {

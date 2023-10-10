@@ -14,7 +14,7 @@ public class HomePageTest : PageTest
     public async Task HomepageHasDataBoxInTitle()
     {
         
-        await Page.GotoAsync("http://localhost:4200/");
+        await Page.GotoAsync("http://localhost:5000/home");
 
         await Expect(Page).ToHaveTitleAsync(new Regex("Data Box"));
 

@@ -39,10 +39,10 @@ jobs:
           
           
       # Step 4: Start your frontend
-      - name: Start Angular
-        run: |
-          cd frontend/BoxFactoryFrontend
-          ng serve &
+        #  - name: Start Angular
+          #  run: |
+          #    cd frontend/BoxFactoryFrontend
+          #    ng serve &
           
           
       # Step 5: Sleep to allow time for the API to start
