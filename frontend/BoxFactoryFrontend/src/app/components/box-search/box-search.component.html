@@ -1,3 +1,27 @@
-<p>
-  box-search works!
-</p>
+<!--
+
+<ion-searchbar [debounce]="1000" (ionInput)="search()"></ion-searchbar>
+
+<ion-list>
+  <ion-item *ngFor="let result of results">
+    <ion-label>{{ result }}</ion-label>
+  </ion-item>
+</ion-list>
+-->
+<ion-searchbar
+  [(ngModel)]="criteria"
+  [debounce]="1000"
+  (ionInput)="search()"
+  placeholder="Search by Box Name, price or color">
+</ion-searchbar>
+
+<ion-list>
+  <ion-item *ngFor="let box of results">
+    <ion-label>
+      Name: {{ box.boxName }} <br>
+      Price: {{ box.price }} <br>
+      Color: {{ box.boxColor }}
+      <!-- Add other box details as needed -->
+    </ion-label>
+  </ion-item>
+</ion-list>

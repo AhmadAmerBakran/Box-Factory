@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Box, SearchBox } from 'src/app/models/box';
+import { BoxService } from 'src/app/services/box.service';
 
 @Component({
   selector: 'app-box-search',
@@ -6,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./box-search.component.scss'],
 })
 export class BoxSearchComponent  implements OnInit {
+  criteria!: string;
+  results: Box[] = [];
 
-  constructor() { }
+  constructor(private boxService: BoxService) { }
 
   ngOnInit() {}
 
+  search() {
+    this.boxService.searchBoxes(this.criteria).subscribe(
+      data => this.results = data,
+      error => console.error('Error fetching search results:', error)
+    );
+  }
 }

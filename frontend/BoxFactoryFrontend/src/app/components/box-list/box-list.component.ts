@@ -23,6 +23,4 @@ export class BoxListComponent  implements OnInit {
     this.router.navigate(['/box', boxId]);
   }
 
-
-
 }

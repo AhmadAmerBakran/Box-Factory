@@ -1,11 +1,30 @@
-<ion-card style="margin: 200px" *ngIf="box">
-  Box ID: {{ box.id }}
-  Box Name: {{ box.boxName }}
-  Price: {{ box.price }}
-  Box Width: {{ box.boxWidth }}
-  Box Length: {{ box.boxLength }}
-  Box Height: {{ box.boxHeight }}
-  Box Thickness: {{ box.boxThickness }}
-  Box Color: {{ box.boxColor }}
-  <ion-img src="{{ box.boxImgUrl }}" alt="Box Image"></ion-img>
-</ion-card>
+
+<div  style="margin-top: 120px" class="box-details">
+
+  <!-- Display the box image if the boxImgUrl is provided -->
+  <div *ngIf="box?.boxImgUrl">
+    <img [src]="box?.boxImgUrl" alt="{{ box?.boxName }}" width="200">
+
+  </div>
+  <h2>{{ box?.boxName }}</h2>
+  <div>
+    <strong>Price:</strong> {{ box?.price }}
+  </div>
+
+  <div>
+    <strong>Dimensions (W x L x H):</strong> {{ box?.boxWidth }} x {{ box?.boxLength }} x {{ box?.boxHeight }} cm
+  </div>
+
+  <div>
+    <strong>Thickness:</strong> {{ box?.boxThickness }} cm
+  </div>
+
+  <div *ngIf="box?.boxColor">
+    <strong>Color:</strong> {{ box?.boxColor }}
+  </div>
+
+  <ion-button *ngIf="box && box.id" (click)="goToUpdatePage(box.id)">Update</ion-button>
+  <ion-button color="danger" *ngIf="box && box.id" (click)="deleteBox(box.id)">Delete</ion-button>
+
+</div>
+

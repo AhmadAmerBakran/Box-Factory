@@ -86,7 +86,7 @@ public class BoxController : ControllerBase
 
 
     [HttpPut]
-    [Route("/api/boxes/{boxId}")]
+    [Route("/api/update/{boxId}")]
     public IActionResult UpdateBox(int boxId, [FromBody] Box updatedBox)
     {
         try
@@ -116,7 +116,7 @@ public class BoxController : ControllerBase
     }
 
     [HttpGet]
-    [Route("api/Searchboxes")]
+    [Route("api/search")]
     public IActionResult SearchBoxes([FromQuery] string searchTerm)
     {
         if (string.IsNullOrEmpty(searchTerm) || searchTerm.Length < 1)
