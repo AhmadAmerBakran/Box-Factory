@@ -12,33 +12,55 @@ jobs:
       pgconn: ${{ secrets.PGCONN }}
 
     steps:
-      # Step 0: Setup .NET SDK
+      
+      # Step 0: Setup Node.js for Angular
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.17.1'
+      # Step 0.1: Install Angular CLI
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+        
+      # Step 1: Setup .NET SDK
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
       
-      # Step 1: Checkout the current repository
+      # Step 2: Checkout the current repository
       - name: Checkout code
         uses: actions/checkout@v4
           
+      # Step 3: Install Angular dependencies
+      - name: Install Angular dependencies
+        run: |
+            cd frontend/BoxFactoryFrontend
+            npm install
+            ng build
           
-      # Step 2: Run Linter against code base
-      #- name: Lint Code Base
-       # uses: super-linter/super-linter@v5
+      # Step 4: Install API Nuget Packages
+      - name: Install API Nuget Packages
+        run: |
+          cd api
+          dotnet restore
+          
+     # Step 4.5: Install Playwright Browsers
+      - name: Install Playwright Browsers
+        run: npx playwright install
       
       
-      # Step 3: Start your API
+      # Step 5: Start your API
       - name: Start API
         run: |
           cd api
           dotnet run &
-      
-      # Step 4: Sleep to allow time for the API to start
+
+      # Step 6: Sleep to allow time for the API to start
       - name: Sleep for 60 seconds
         run: sleep 60s
       
-      # Step 5: Run tests
+      # Step 7: Run tests
       - name: Run Tests
         run: |
           cd BoxFactoryTest

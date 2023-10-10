@@ -15,6 +15,9 @@ builder.Services.AddControllers();
 builder.Services.AddSingleton<BoxService>();
 builder.Services.AddSingleton<IBoxRepository, Repository>();
 builder.Services.AddSingleton<CreateDataBase>();
+var frontEndRelativePath = "./../frontend/BoxFactoryFrontend/www";
+
+builder.Services.AddSpaStaticFiles(conf => conf.RootPath = frontEndRelativePath);
 
 var app = builder.Build();
 
@@ -33,6 +36,16 @@ app.UseCors(options =>
         .AllowAnyMethod()
         .AllowAnyHeader()
         .AllowCredentials();
+});
+
+app.UseSpaStaticFiles();
+
+app.UseSpa(conf =>
+
+{
+
+    conf.Options.SourcePath = frontEndRelativePath;
+
 });
 
 app.UseHttpsRedirection();
