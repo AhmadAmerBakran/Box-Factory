@@ -42,8 +42,13 @@ jobs:
       # Step 4: Install API Nuget Packages
       - name: Install API Nuget Packages
         run: |
-          cd api # Replace with your actual .NET Web API directory path
+          cd api
           dotnet restore
+          
+     # Step 4.5: Install Playwright Browsers
+      - name: Install Playwright Browsers
+        run: npx playwright install
+      
       
       # Step 5: Start your API
       - name: Start API
