@@ -1,13 +1,3 @@
-<!--
-
-<ion-searchbar [debounce]="1000" (ionInput)="search()"></ion-searchbar>
-
-<ion-list>
-  <ion-item *ngFor="let result of results">
-    <ion-label>{{ result }}</ion-label>
-  </ion-item>
-</ion-list>
--->
 <ion-searchbar
   [(ngModel)]="criteria"
   [debounce]="1000"

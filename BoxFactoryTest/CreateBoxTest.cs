@@ -32,7 +32,7 @@ namespace BoxFactoryTest
                 BoxHeight = 80,
                 BoxThickness = 5,
                 BoxColor = "Brown",
-                BoxImgUrl = ""
+                BoxImgUrl = "https://www.progressivepp.com/wp-content/uploads/2019/07/BS363636MD-scaled-600x904-retouched.jpg"
             };
             
             var url = "http://localhost:5000/api/box";
