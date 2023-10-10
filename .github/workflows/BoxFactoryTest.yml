@@ -22,10 +22,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
           
-          
-      # Step 2: Run Linter against code base
-      #- name: Lint Code Base
-       # uses: super-linter/super-linter@v5
+      # Step 2: add Playwright Package and build  
+      - name: Playwright Package and build
+        run: |
+            cd BoxFactoryTest
+            dotnet add package Microsoft.Playwright.NUnit
+            dotnet build
+            pwsh bin/Debug/net8.0/playwright.ps1 install
       
       
       # Step 3: Start your API
